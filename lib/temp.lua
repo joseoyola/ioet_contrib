@@ -47,7 +47,7 @@ function TEMP:getTemp()
         print ("ERROR ON I2C: ",rv)
     end
     --Converting temperature into Celsius (each LSB = 1/32 Deg. Celsius)
-    local temperature = dat:get_as(storm.array.INT16_BE, 0)/32
+    local temperature = dat:get_as(storm.array.INT16_BE, 0)/(32*4) --Divide by 4, datasheet spec
     return temperature
 end
 

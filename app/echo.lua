@@ -22,7 +22,7 @@ ipaddrs = string.format("%02x%02x:%02x%02x:%02x%02x:%02x%02x::%02x%02x:%02x%02x:
 
 print("ip addr", ipaddrs)
 print("node id", storm.os.nodeid())
-cport = 49152
+cport = 49352
 
 -- create echo server as handler
 server = function()
@@ -30,7 +30,7 @@ server = function()
 			       function(payload, from, port)
 				  brd:flash(1)
 				  print (string.format("from %s port %d: %s",from,port,payload))
-				  print(storm.net.sendto(ssock, payload, from, cport))
+				  print(storm.net.sendto(ssock, payload, from, port))
 				  brd:flash(1)
 			       end)
 end
